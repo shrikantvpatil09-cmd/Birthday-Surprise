@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>🎂 Pillu Birthday Surprise For You ☺️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: "Trebuchet MS", sans-serif;
+    color: white;
+    background: linear-gradient(
+        -45deg,
+        #ff416c,
+        #ff4b2b,
+        #8e2de2,
+        #4a00e0
+    );
+    background-size: 400% 400%;
+    animation: gradient 12s ease infinite;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* =========================
+   START SCREEN
+========================= */
+
+.start-screen {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    z-index: 100;
+    background: rgba(0,0,0,0.25);
+    backdrop-filter: blur(10px);
+    transition: 0.8s ease;
+}
+
+.start-screen.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.start-screen h1 {
+    font-size: clamp(2rem, 9vw, 4rem);
+    margin-bottom: 15px;
+}
+
+.start-screen p {
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+.start-btn {
+    border: none;
+    padding: 16px 35px;
+    border-radius: 50px;
+    background: white;
+    color: #e84393;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 30px rgba(255,255,255,0.5);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%,100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.08);
+    }
+}
+
+/* =========================
+   MAIN CARD
+========================= */
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.card {
+    width: min(92%, 650px);
+    padding: 35px 25px;
+    text-align: center;
+    border-radius: 30px;
+
+    background: rgba(255,255,255,0.13);
+    border: 1px solid rgba(255,255,255,0.25);
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,0.3);
+
+    animation: cardIn 1.2s ease;
+}
+
+@keyframes cardIn {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.title {
+    font-size: clamp(2.5rem, 10vw, 5rem);
+    line-height: 1;
+    margin-bottom: 15px;
+
+    text-shadow:
+        0 0 10px #fff,
+        0 0 30px #ff4da6,
+        0 0 60px #ff4da6;
+
+    animation: titleGlow 2s infinite alternate;
+}
+
+@keyframes titleGlow {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.04);
+    }
+}
+
+.name {
+    color: #ffeaa7;
+}
+
+/* =========================
+   CAKE
+========================= */
+
+.cake {
+    position: relative;
+    width: 180px;
+    height: 130px;
+    margin: 35px auto 25px;
+}
+
+.cake-body {
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    width: 160px;
+    height: 85px;
+
+    background:
+        linear-gradient(
+            #ff7675,
+            #e84393
+        );
+
+    border-radius: 15px 15px 25px 25px;
+
+    box-shadow:
+        0 10px 20px rgba(0,0,0,0.25);
+}
+
+.cake-top {
+    position: absolute;
+    top: 30px;
+    left: 10px;
+
+    width: 160px;
+    height: 35px;
+
+    background: #ffeaa7;
+
+    border-radius: 50%;
+}
+
+.candle {
+    position: absolute;
+    width: 10px;
+    height: 45px;
+    top: -15px;
+
+    background: repeating-linear-gradient(
+        45deg,
+        #74b9ff 0,
+        #74b9ff 7px,
+        white 7px,
+        white 14px
+    );
+
+    border-radius: 5px;
+}
+
+.candle:nth-child(1) {
+    left: 50px;
+}
+
+.candle:nth-child(2) {
+    left: 85px;
+}
+
+.candle:nth-child(3) {
+    left: 120px;
+}
+
+.flame {
+    position: absolute;
+    width: 14px;
+    height: 20px;
+    top: -35px;
+    left: -2px;
+
+    background: #ffeaa7;
+
+    border-radius: 50% 50% 50% 50%;
+
+    box-shadow:
+        0 0 10px #ffeb3b,
+        0 0 25px #ff9800;
+
+    animation: flame 0.6s infinite alternate;
+}
+
+@keyframes flame {
+    from {
+        transform: scale(0.8) rotate(-5deg);
+    }
+
+    to {
+        transform: scale(1.1) rotate(5deg);
+    }
+}
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message {
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    line-height: 1.7;
+    margin: 20px auto;
+    max-width: 500px;
+}
+
+.highlight {
+    color: #ffeaa7;
+    font-weight: bold;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.celebrate-btn {
+    margin-top: 15px;
+    padding: 15px 28px;
+
+    border: none;
+    border-radius: 50px;
+
+    background: white;
+    color: #e84393;
+
+    font-size: 1rem;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,0.25);
+
+    transition: 0.3s;
+}
+
+.celebrate-btn:hover {
+    transform: scale(1.08);
+}
+
+.celebrate-btn:active {
+    transform: scale(0.95);
+}
+
+/* =========================
+   CONFETTI
+========================= */
+
+.confetti {
+    position: fixed;
+    top: -20px;
+    width: 10px;
+    height: 18px;
+    z-index: 999;
+    pointer-events: none;
+
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform:
+            translateY(110vh)
+            rotate(1000deg);
+
+        opacity: 0;
+    }
+}
+
+/* =========================
+   HEARTS
+========================= */
+
+.heart {
+    position: fixed;
+    bottom: -30px;
+
+    font-size: 25px;
+
+    animation: heartFloat 4s linear forwards;
+
+    pointer-events: none;
+    z-index: 20;
+}
+
+@keyframes heartFloat {
+    0% {
+        transform:
+            translateY(0)
+            scale(0.5)
+            rotate(0);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(-110vh)
+            scale(1.5)
+            rotate(30deg);
+
+        opacity: 0;
+    }
+}
+
+/* =========================
+   SURPRISE
+========================= */
+
+.surprise {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(8px);
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: 0.5s;
+
+    z-index: 200;
+}
+
+.surprise.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.surprise-box {
+    width: 90%;
+    max-width: 500px;
+
+    padding: 40px 25px;
+
+    text-align: center;
+
+    background: linear-gradient(
+        135deg,
+        #ff758c,
+        #8e44ad
+    );
+
+    border-radius: 30px;
+
+    box-shadow:
+        0 20px 80px rgba(0,0,0,0.5);
+
+    animation: pop 0.7s ease;
+}
+
+@keyframes pop {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+.surprise-box h2 {
+    font-size: clamp(2rem, 8vw, 3rem);
+    margin-bottom: 20px;
+}
+
+.close-btn {
+    margin-top: 25px;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    background: white;
+    color: #e84393;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 480px) {
+
+    .card {
+        padding: 30px 18px;
+    }
+
+    .cake {
+        transform: scale(0.85);
+        margin: 25px auto 10px;
+    }
+
+    .message {
+        font-size: 1rem;
+    }
+
+    .celebrate-btn {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- START SCREEN -->
+
+<div class="start-screen" id="startScreen">
+
+    <div style="font-size:70px;">🎁</div>
+
+    <h1>Your chotu bal has a surprise for you...</h1>
+
+    <p>Tap the button to open your birthday surprise 💖</p>
+
+    <button class="start-btn" onclick="startBirthday()">
+        🎁 Open Surprise
+    </button>
+
+</div>
+
+
+<!-- MAIN CONTENT -->
+
+<div class="container">
+
+    <div class="card">
+
+        <div style="font-size:55px;">🥳</div>
+
+        <h1 class="title">
+            Happy Birthday Babyy ❤️
+        </h1>
+
+        <h2 class="name">
+            MY SOULMATE,MY WIFYYY 💖
+        </h2>
+
+
+        <!-- CAKE -->
+
+        <div class="cake">
+
+            <div class="cake-body"></div>
+
+            <div class="cake-top">
+
+                <div class="candle">
+                    <div class="flame"></div>
+                </div>
+
+                <div class="candle">
+                    <div class="flame"></div>
+                </div>
+
+                <div class="candle">
+                    <div class="flame"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <p class="message">
+Happy Birthday, my love ❤️
+The world became a little more beautiful the day you were born, and I’m so lucky to be part of your story.I hope your smile never fades, and through every moment—perfect or imperfect—I’ll be right beside you. 
+            <br><br>
+
+            Keep smiling. Keep shining.With or Without me. 🌟
+
+        </p>
+
+
+        <button
+            class="celebrate-btn"
+            onclick="celebrate()">
+
+            🎉 Make It Rain! 🎉
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- FINAL SURPRISE -->
+
+<div class="surprise" id="surprise">
+
+    <div class="surprise-box">
+
+        <div style="font-size:70px;">
+            🎂
+        </div>
+
+        <h2>
+            One More Thing...
+        </h2>
+
+        <p style="font-size:1.15rem; line-height:1.7;">
+
+            Shonuu tuza bdy mazya sathi always special asl karan suruch tethun zal hot ani bgta bgta apn ha 4th bdy celebrate karylo dream vatyly mala he.me kharch khup lucky ahe ki tu ahes mazya sobat.... ❤️🥹❤️You deserve all the love in the world. ✨
+
+            <br><br>
+
+            Here's to another amazing year
+            of adventures! 🥂✨
+
+        </p>
+
+        <button
+            class="close-btn"
+            onclick="closeSurprise()">
+
+            ❤️ Thank You
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   START BIRTHDAY
+========================= */
+
+function startBirthday() {
+
+    document
+        .getElementById("startScreen")
+        .classList.add("hide");
+
+    celebrate();
+
+    setTimeout(() => {
+        createHearts();
+    }, 500);
+}
+
+
+/* =========================
+   CONFETTI
+========================= */
+
+const colors = [
+    "#ff4757",
+    "#ffa502",
+    "#2ed573",
+    "#1e90ff",
+    "#e84393",
+    "#a55eea",
+    "#ffeaa7",
+    "#ffffff"
+];
+
+function createConfetti() {
+
+    const confetti =
+        document.createElement("div");
+
+    confetti.className = "confetti";
+
+    confetti.style.left =
+        Math.random() * 100 + "vw";
+
+    confetti.style.backgroundColor =
+        colors[
+            Math.floor(
+                Math.random() * colors.length
+            )
+        ];
+
+    confetti.style.width =
+        Math.random() * 8 + 6 + "px";
+
+    confetti.style.height =
+        Math.random() * 15 + 8 + "px";
+
+    confetti.style.animationDuration =
+        Math.random() * 3 + 2 + "s";
+
+    document.body.appendChild(confetti);
+
+    setTimeout(() => {
+        confetti.remove();
+    }, 6000);
+}
+
+
+/* =========================
+   BIG CELEBRATION
+========================= */
+
+function celebrate() {
+
+    // Confetti burst
+
+    for (let i = 0; i < 250; i++) {
+
+        setTimeout(
+            createConfetti,
+            i * 8
+        );
+
+    }
+
+    // Hearts
+
+    for (let i = 0; i < 30; i++) {
+
+        setTimeout(
+            createHeart,
+            i * 80
+        );
+
+    }
+
+    // Show surprise after celebration
+
+    setTimeout(() => {
+
+        document
+            .getElementById("surprise")
+            .classList.add("show");
+
+    }, 3500);
+}
+
+
+/* =========================
+   HEARTS
+========================= */
+
+function createHeart() {
+
+    const heart =
+        document.createElement("div");
+
+    heart.className = "heart";
+
+    const hearts = [
+        "❤️",
+        "💖",
+        "💕",
+        "💗",
+        "💓",
+        "💘"
+    ];
+
+    heart.innerHTML =
+        hearts[
+            Math.floor(
+                Math.random() * hearts.length
+            )
+        ];
+
+    heart.style.left =
+        Math.random() * 100 + "vw";
+
+    heart.style.animationDuration =
+        Math.random() * 2 + 3 + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 5000);
+}
+
+
+function createHearts() {
+
+    setInterval(() => {
+
+        createHeart();
+
+    }, 1200);
+
+}
+
+
+/* =========================
+   CLOSE SURPRISE
+========================= */
+
+function closeSurprise() {
+
+    document
+        .getElementById("surprise")
+        .classList.remove("show");
+
+}
+
+</script>
+
+</body>
+</html>
